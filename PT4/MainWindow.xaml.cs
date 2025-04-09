@@ -20,10 +20,18 @@ namespace PT4
         {
             InitializeComponent();
         }
-        //Випадне вікно яке буде активуватись при натисканні на меню New
-        private void mnuNew_Click(object sender, RoutedEventArgs e)
+        private void NewCommand_CanExecute(object sender,
+
+         CanExecuteRoutedEventArgs e)
+
         {
-            MessageBox.Show("Hello");
+            e.CanExecute = true;
+        }
+        private void NewCommand_Executed(object sender,
+
+        ExecutedRoutedEventArgs e)
+        {
+            txtEditor.Text = "";
         }
     }
 }

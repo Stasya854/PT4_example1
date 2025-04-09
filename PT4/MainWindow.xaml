@@ -6,29 +6,44 @@
         xmlns:local="clr-namespace:PT4"
         mc:Ignorable="d"
         Title="MenuIconCheckableSample" Height="150" Width="300">
-    <!--це контейнер, який дозволяє "пришвартовувати" внутрішні елементи до країв вікна або панелі.-->
+    <!-- Встановлюємо прив’язки команд. Це дозволяє реагувати на виконання певних дій -->
+    <Window.CommandBindings>
+        <!-- Прив’язка команди "New" до методів CanExecute та Executed -->
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+    </Window.CommandBindings>
+
+    <!-- DockPanel — це контейнер, який дозволяє "пришвартовувати" внутрішні елементи до країв вікна -->
     <DockPanel>
-        <!--Створення меню у верхній частині вікна, змінився колір фону і шрифт-->
+
+        <!-- Меню, яке пришвартоване до верхньої частини вікна -->
         <Menu DockPanel.Dock="Top" FontFamily="Consolas" FontSize="17" Background="Lavender" Foreground="DarkSlateBlue">
-            <!--Тут задається текст самого меню-->
+           
+            <!-- Головний пункт меню "File" -->
             <MenuItem Header="_File">
-                <!--Тут задається підменю, яке знаходиться всередині меню-->
-                <MenuItem Header="_New" Click="mnuNew_Click"/>
+                <!-- Підменю: пункт "New"  -->
+                <MenuItem Header="_New" />
+
+                <!-- Розділювач між пунктами меню -->
+                <Separator />
+
+                <!-- Пункт меню "Exit"  -->
                 <MenuItem Header="_Exit" />
             </MenuItem>
-            <MenuItem Header="_Tools">
-                <MenuItem Header="_Manage users">
-                    <!--Під'єднання іконки-->
-                    <MenuItem.Icon>
-                        <Image Source="component\images\user_667327.png" />
-                    </MenuItem.Icon>
-                </MenuItem>
-                <!--Підменю в якому відображається пункт меню з можливістю ввімкнення або вимкнення опції-->
-                <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
+            <!-- Головний пункт меню "Edit" (Редагування) -->
+ 			<MenuItem Header="_Edit">
+ 				<!-- Пункт "Cut" (Вирізати), команда прив'язана до текстового поля -->
+ 				<MenuItem Header="Cut" Command="ApplicationCommands.Cut" CommandTarget="{Binding ElementName=txtEditor}" />
+ 
+ 				<!-- Пункт "Copy" (Копіювати) -->
+ 				<MenuItem Header="Copy" Command="ApplicationCommands.Copy" CommandTarget="{Binding ElementName=txtEditor}" />
+ 
+ 				<!-- Пункт "Paste" (Вставити) -->
+ 				<MenuItem Header="Paste" Command="ApplicationCommands.Paste" CommandTarget="{Binding ElementName=txtEditor}" />
             </MenuItem>
         </Menu>
         <!--Багатострокове поле з новими кольорами-->
-        <TextBox AcceptsReturn="True" 
+        <TextBox AcceptsReturn="True"
+                 Name="txtEditor"
                  Foreground="DarkSlateGray" 
                  Background="#F7E7CE" 
                  FontFamily="Consolas" 
