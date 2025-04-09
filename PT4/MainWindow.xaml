@@ -5,20 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PT4"
         mc:Ignorable="d"
-        Title="MenuSample" Height="200" Width="200">
+        Title="MenuIconCheckableSample" Height="150" Width="300">
     <!--це контейнер, який дозволяє "пришвартовувати" внутрішні елементи до країв вікна або панелі.-->
     <DockPanel>
         <!--Створення меню у верхній частині вікна, змінився колір фону і шрифт-->
         <Menu DockPanel.Dock="Top" FontFamily="Consolas" FontSize="17" Background="Lavender" Foreground="DarkSlateBlue">
             <!--Тут задається текст самого меню-->
             <MenuItem Header="_File">
-                <!--Тут задається підменю, яке знаходиться усередині меню-->
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Save" />
-                <!--Розділювач-->
-                <Separator />
+                <!--Тут задається підменю, яке знаходиться всередині меню-->
                 <MenuItem Header="_Exit" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_Manage users">
+                    <!--Під'єднання іконки-->
+                    <MenuItem.Icon>
+                        <Image Source="component\images\user_667327.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Підменю в якому відображається пункт меню з можливістю ввімкнення або вимкнення опції-->
+                <MenuItem Header="_Show groups" IsCheckable="True" IsChecked="True" />
             </MenuItem>
         </Menu>
         <!--Багатострокове поле з новими кольорами-->
