@@ -13,6 +13,7 @@
             <!--Тут задається текст самого меню-->
             <MenuItem Header="_File">
                 <!--Тут задається підменю, яке знаходиться всередині меню-->
+                <MenuItem Header="_New" Click="mnuNew_Click"/>
                 <MenuItem Header="_Exit" />
             </MenuItem>
             <MenuItem Header="_Tools">

@@ -20,5 +20,10 @@ namespace PT4
         {
             InitializeComponent();
         }
+        //Випадне вікно яке буде активуватись при натисканні на меню New
+        private void mnuNew_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hello");
+        }
     }
 }
